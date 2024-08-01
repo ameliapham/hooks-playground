@@ -17,7 +17,8 @@
     "geist": "^1.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tss-react": "^4.9.12"
+    "tss-react": "^4.9.12",
+    "use-pokemon": "^1.0.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.56",

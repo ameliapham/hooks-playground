@@ -1,5 +1,5 @@
 
-import type { PokemonData } from "./getPokemonsData";
+import type { PokemonData } from "use-pokemon";
 import { tss } from "tss-react";
 
 type Props = {

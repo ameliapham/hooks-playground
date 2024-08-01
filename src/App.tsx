@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import { Pokemon } from "./Pokemon";
-import { usePokemon } from "./getPokemonsData";
-
+import { usePokemon } from "use-pokemon";
 
 export function App() {
 
