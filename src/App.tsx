@@ -1,5 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { TodoList } from "./TodoList";
 
+export function App() {
+	return <TodoList />;
+}
+
+/*
 import { useState } from "react";
 import { Pokemon } from "./Pokemon";
 import { usePokemon } from "use-pokemon";
@@ -16,6 +22,7 @@ export function App() {
 
 	return (
 		<div>
+
 			{pokemons.map(pokemon => (
 				<Pokemon
 					key={pokemon.id}
@@ -28,3 +35,4 @@ export function App() {
 	);
 
 }
+*/
