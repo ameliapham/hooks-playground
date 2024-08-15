@@ -90,6 +90,7 @@ export function TodoList() {
                     onChange={e => setInputValue(e.target.value)}
                 />
                 <button
+                    disabled={inputValue === ""}
                     onClick={() => {
                         addTodo({ text: inputValue })
                         setInputValue("")
