@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Todo } from "./Todo";
+import { AddTodo } from "./AddTodo"; 
 
 type TodoData = {
     id: number;
@@ -27,7 +28,6 @@ const initialTodos: TodoData[] = [
 
 export function TodoList() {
     const [todos, setTodos] = useState<TodoData[]>(initialTodos)
-    const [inputValue, setInputValue] = useState<string>("")
 
     function addTodo(params: { text: string }) {
         const { text } = params
@@ -83,20 +83,9 @@ export function TodoList() {
     return (
         <div>
             <h1>New Todo List de Huong</h1>
-            <div>
-                <input
-                    type="text"
-                    value={inputValue}
-                    onChange={e => setInputValue(e.target.value)}
-                />
-                <button
-                    disabled={inputValue === ""}
-                    onClick={() => {
-                        addTodo({ text: inputValue })
-                        setInputValue("")
-                    }}
-                >Add</button>
-            </div>
+            <AddTodo
+                onAddTodo={({text}) => addTodo({text})}
+            />
             <ul>
                 {todos.map(todo => (
                     <Todo
