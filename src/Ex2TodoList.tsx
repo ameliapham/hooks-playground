@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Todo } from "./Todo";
-import { AddTodo } from "./AddTodo"; 
+import { AddTodo } from "./AddTodo";
 
 type TodoData = {
     id: number;
@@ -80,11 +80,29 @@ export function TodoList() {
 
     }
 
+    function changeTextTodo(params: { id: number, text: string }) {
+        const { id, text } = params
+
+        const newTodos: TodoData[] = []
+
+        for (let i = 0; i < todos.length; i++) {
+            const newTodo: TodoData = {
+                id: todos[i].id,
+                text: id === todos[i].id ? text : todos[i].text,
+                done: todos[i].done
+            }
+
+            newTodos.push(newTodo)
+        }
+
+        setTodos(newTodos)
+    }
+
     return (
         <div>
             <h1>New Todo List de Huong</h1>
             <AddTodo
-                onAddTodo={({text}) => addTodo({text})}
+                onAddTodo={({ text }) => addTodo({ text })}
             />
             <ul>
                 {todos.map(todo => (
@@ -97,6 +115,7 @@ export function TodoList() {
                             done
                         })}
                         onDelete={() => deleteTodo({ id: todo.id })}
+                        onTextChange={({ text }) => changeTextTodo({ id: todo.id, text })}
                     />
                 ))}
             </ul>

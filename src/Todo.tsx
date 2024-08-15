@@ -1,15 +1,20 @@
+import { useState } from "react";
+
 export type Props = {
     className?: string;
     text: string
     done: boolean;
     onDelete: () => void;
     onDoneChange: (params: { done: boolean; }) => void;
+    onTextChange: (params: { text: string }) => void;
 }
 
 
 export function Todo(props: Props) {
 
-    const { className, text, done, onDoneChange, onDelete } = props;
+    const { className, text, done, onDoneChange, onDelete, onTextChange } = props;
+    const [isEditing, setIsEditing] = useState(false)
+    const [inputValue, setInputValue] = useState(text)
 
     return (
         <li className={className}>
@@ -18,11 +23,47 @@ export function Todo(props: Props) {
                 checked={done}
                 onChange={e => onDoneChange({ done: e.target.checked })}
             />
-            <span>{text}</span>
+            {/*
+            {(()=>{
+                if(isEditing){
+                    return <span>{text}</span>
+                }else{
+                    return <></>
+                }
+            })()}
+
+            {!isEditing && <span>{text}</span>}
+            {isEditing && <></> }
+            */}
+
+            {
+                isEditing ?
+                    <input
+                        type="text"
+                        value={inputValue}
+                        onChange={e => setInputValue(e.target.value)}
+                    /> :
+                    <span>{text}</span>
+            }
+
+            <button
+                onClick={()=>{
+                    if(isEditing){
+                        setIsEditing(true);
+                    }else{
+                        onTextChange({ text: inputValue })
+                        setIsEditing(false)
+                    }
+                }}
+            >
+                {isEditing ? <>Validate</> : <>Edit</>}
+            </button>
 
             <button
                 onClick={() => onDelete()}
-            >Delete</button>
+            >
+                Delete
+            </button>
         </li>
     )
 
