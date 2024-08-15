@@ -47,17 +47,34 @@ export function Todo(props: Props) {
             }
 
             <button
-                onClick={()=>{
-                    if(isEditing){
-                        setIsEditing(true);
-                    }else{
+                onClick={() => {
+                    if (isEditing) {
                         onTextChange({ text: inputValue })
                         setIsEditing(false)
+                    } else {
+                        setIsEditing(true);
                     }
                 }}
             >
-                {isEditing ? <>Validate</> : <>Edit</>}
+                {isEditing ? "Validate" : "Edit"}
             </button>
+
+            {/*
+            {
+                isEditing ?
+                    <button
+                        onClick={() => {
+                            onTextChange({ text: inputValue })
+                            setIsEditing(false)
+                        }}
+                    >Validate</button> :
+                    <button
+                        onClick={() => {
+                            setIsEditing(true);
+                        }}
+                    >Edit</button>
+            }
+            */}
 
             <button
                 onClick={() => onDelete()}
