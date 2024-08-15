@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { TodoList } from "./ExTodoList";
+import { TodoList } from "./Ex2TodoList";
 
 export function App() {
 	return <TodoList />;
